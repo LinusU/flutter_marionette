@@ -1,0 +1,54 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_marionette (0.0.1):
+    - Flutter
+    - GenericJSONType (= 1.0.0-alpha.2)
+    - Marionette (= 1.0.0-alpha.11)
+  - GenericJSONType (1.0.0-alpha.2)
+  - LinusU_JSBridge (1.0.0-alpha.15):
+    - PromiseKit (~> 6.0)
+  - Marionette (1.0.0-alpha.11):
+    - LinusU_JSBridge (= 1.0.0-alpha.15)
+    - PromiseKit (~> 6.0)
+    - Signals (~> 6.0)
+  - PromiseKit (6.8.3):
+    - PromiseKit/CorePromise (= 6.8.3)
+    - PromiseKit/Foundation (= 6.8.3)
+    - PromiseKit/UIKit (= 6.8.3)
+  - PromiseKit/CorePromise (6.8.3)
+  - PromiseKit/Foundation (6.8.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.8.3):
+    - PromiseKit/CorePromise
+  - Signals (6.0.0)
+
+DEPENDENCIES:
+  - Flutter (from `.symlinks/flutter/ios`)
+  - flutter_marionette (from `.symlinks/plugins/flutter_marionette/ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GenericJSONType
+    - LinusU_JSBridge
+    - Marionette
+    - PromiseKit
+    - Signals
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  flutter_marionette:
+    :path: ".symlinks/plugins/flutter_marionette/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  flutter_marionette: 0fab20f167315a81fef1e574a240d957e6e434fd
+  GenericJSONType: 4e17961cd94ae24ddd07c4f1003acefee74ae7d9
+  LinusU_JSBridge: 26f133b25556dac6cab3d48ffd96a51137148c50
+  Marionette: 9707745703fa360aac7c373678aec049495d9363
+  PromiseKit: 94c6e781838c5bf4717677d0d882b0e7250c80fc
+  Signals: eca6a9098b40ed5f8d8b60498d0e91168fa7c0cc
+
+PODFILE CHECKSUM: ebd43b443038e611b86ede96e613bd6033c49497
+
+COCOAPODS: 1.6.1
