@@ -5,6 +5,17 @@ import Marionette
 import PromiseKit
 import UIKit
 
+#if os(iOS)
+enum GlobalUIHook {
+    case none
+    case view(UIView)
+    case viewController(UIViewController)
+    case window(UIWindow)
+}
+
+internal var globalUIHook: GlobalUIHook = .none
+#endif
+
 extension Promise where T == Void {
     func flutter(_ result: @escaping FlutterResult) {
         self.done { _ in
@@ -43,13 +54,28 @@ public class SwiftFlutterMarionettePlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
 
+    #if os(iOS)
+    public static func setGlobalUIHook(view: UIView) { globalUIHook = .view(view) }
+    public static func setGlobalUIHook(viewController: UIViewController) { globalUIHook = .viewController(viewController) }
+    public static func setGlobalUIHook(window: UIWindow) { globalUIHook = .window(window) }
+    #endif
+
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
             case "init":
                 let id = UUID().uuidString
                 let page = Marionette()
                 page.webView.frame = page.webView.frame.offsetBy(dx: -4000, dy: -4000)
-                UIApplication.shared.windows.first?.addSubview(page.webView)
+
+                #if os(iOS)
+                switch globalUIHook {
+                    case .none: break
+                    case .view(let view): view.addSubview(page.webView)
+                    case .viewController(let viewController): viewController.view.addSubview(page.webView)
+                    case .window(let window): window.addSubview(page.webView)
+                }
+                #endif
+
                 SwiftFlutterMarionettePlugin.pages[id] = page
                 result(id)
             case "dispose":
